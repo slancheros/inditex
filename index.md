@@ -60,9 +60,12 @@ Para solucionar el problema se ha creado un servicio que tiene las librerías de
 
 1. En los datos del ejemplo se ha cambiado la llave primaria de la tabla, ya que no puede ser que la llave primaria tenga datos repetidos. Dado que el campo Price_list tiene valores diferentes para cada registro, se ha colocado éste como llave primaria
 2. El parámetro queryDate sería la fecha parámetro para saber qué precio debe cobrarse en un momento dado.
+3. La tabla creada en H2 es la siguiente:
+ ![Image](2.png)
+ ![Image](1.png)
+4.La URL del servicio se construye así /prices/{brandId}/{productId}/{queryDate}. 
+5.La respuesta del servicio es una cadena en formato json con cada uno de los atributos de la tabla Price correspondiente con los datos suministrados. 
+6.Ninguno de los parámetros es opcional
+7.Adicionalmene se proporcionan respuestas para el path / y para /prices, éste último devuelve todos los registros de la tabla Price.
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
 

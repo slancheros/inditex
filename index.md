@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+## Prueba de Inditex
 
-You can use the [editor on GitHub](https://github.com/slancheros/inditex/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Este repositorio contiene la respuesta a la prueba de Java de Inditex que se coloca en el enunciado
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Enunciado
 
-### Markdown
+n la base de datos de comercio electrónico de la compañía disponemos de la tabla PRICES que refleja el precio final (pvp) y la tarifa que aplica a un producto de una cadena entre unas fechas determinadas. A continuación se muestra un ejemplo de la tabla con los campos relevantes:
+ 
+PRICES
+-------
+ 
+BRAND_ID         START_DATE                                    END_DATE                        PRICE_LIST                   PRODUCT_ID  PRIORITY                 PRICE           CURR
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1         2020-06-14-00.00.00                        2020-12-31-23.59.59                        1                        35455                0                        35.50            EUR
+1         2020-06-14-15.00.00                        2020-06-14-18.30.00                        2                        35455                1                        25.45            EUR
+1         2020-06-15-00.00.00                        2020-06-15-11.00.00                        3                        35455                1                        30.50            EUR
+1         2020-06-15-16.00.00                        2020-12-31-23.59.59                        4                        35455                1                        38.95            EUR
+ 
+Campos: 
+ 
+BRAND_ID: foreign key de la cadena del grupo (1 = ZARA).
+START_DATE , END_DATE: rango de fechas en el que aplica el precio tarifa indicado.
+PRICE_LIST: Identificador de la tarifa de precios aplicable.
+PRODUCT_ID: Identificador código de producto.
+PRIORITY: Desambiguador de aplicación de precios. Si dos tarifas coinciden en un rago de fechas se aplica la de mayor prioridad (mayor valor numérico).
+PRICE: precio final de venta.
+CURR: iso de la moneda.
+ 
+Se pide:
+ 
+Construir una aplicación/servicio en SpringBoot que provea una end point rest de consulta  tal que:
+ 
+Acepte como parámetros de entrada: fecha de aplicación, identificador de producto, identificador de cadena.
+Devuelva como datos de salida: identificador de producto, identificador de cadena, tarifa a aplicar, fechas de aplicación y precio final a aplicar.
+ 
+Se debe utilizar una base de datos en memoria (tipo h2) e inicializar con los datos del ejemplo, (se pueden cambiar el nombre de los campos y añadir otros nuevos si se quiere, elegir el tipo de dato que se considere adecuado para los mismos).
+              
+Desarrollar unos test al endpoint rest que  validen las siguientes peticiones al servicio con los datos del ejemplo:
+                                                                                       
+-          Test 1: petición a las 10:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+-          Test 2: petición a las 16:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+-          Test 3: petición a las 21:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+-          Test 4: petición a las 10:00 del día 15 del producto 35455   para la brand 1 (ZARA)
+-          Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA)
+ 
+ 
+Se valorará:
+ 
+Diseño y construcción del servicio.
+Calidad de Código.
+Resultados correctos en los test.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+## Aclaraciones
 
-# Header 1
-## Header 2
-### Header 3
+Para solucionar el problema se ha creado un servicio que tiene las librerías de JPA, H2 y Starter Web de Spring Boot. Dado que sólo se requiere la creación de un endpoint que traiga los datos requeridos.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+## Consideraciones
+
+1. En los datos del ejemplo se ha cambiado la llave primaria de la tabla, ya que no puede ser que la llave primaria tenga datos repetidos. Dado que el campo Price_list tiene valores diferentes para cada registro, se ha colocado éste como llave primaria
+2. El parámetro queryDate sería la fecha parámetro para saber qué precio debe cobrarse en un momento dado.
 
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/slancheros/inditex/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.

@@ -70,7 +70,10 @@ Para solucionar el problema se ha creado un servicio que tiene las librerías de
 7. Adicionalmene se proporcionan respuestas para el path / y para /prices, éste último devuelve todos los registros de la tabla Price.
 
 ## Solución
-
-
-
+ ![Image](3.png)
+ ![Image](4.png)
+ ![Image](5.png)
+ ![Image](6.png)
+ ![Image](6.png)
+ 
 

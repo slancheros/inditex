@@ -70,10 +70,19 @@ Para solucionar el problema se ha creado un servicio que tiene las librerías de
 7. Adicionalmene se proporcionan respuestas para el path / y para /prices, éste último devuelve todos los registros de la tabla Price.
 
 ## Solución
+ Se ha probado el servicio a través del llamado web en la URL con los parámetros indicados (brandId, productId, queryDate(fecha de aplicación):
+ 
  ![Image](3.png)
  ![Image](4.png)
  ![Image](5.png)
  ![Image](6.png)
- ![Image](6.png)
+ ![Image](7.png)
+ 
+ También se han hecho pruebas automatizadas, como se requiere en el enunciado:
+ 
+  ![Image](8.png)
+  
+  El paquete en el que se encuentra el código es com.inditex.data, siguiendo la estructura de Maven.
+  
  
 
